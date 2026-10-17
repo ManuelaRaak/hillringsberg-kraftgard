@@ -20,16 +20,16 @@
         .nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
         .logo { font-weight: bold; font-size: 1.3rem; color: var(--primary); letter-spacing: 1px; }
         nav ul { display: flex; list-style: none; gap: 20px; }
-        nav a { text-decoration: none; color: var(--text); font-weight: 500; cursor: pointer; transition: color 0.3s; }
+        nav a { text-decoration: none; color: var(--text); font-weight: 500; cursor: pointer; transition: color 0.3s; display: inline-block; padding: 10px 15px; }
         nav a:hover, nav a.active { color: var(--primary); }
         .lang-selector { display: flex; gap: 8px; }
-        .lang-btn { background: none; border: none; font-size: 1.3rem; cursor: pointer; transition: transform 0.2s; }
+        .lang-btn { background: none; border: none; font-size: 1.3rem; cursor: pointer; transition: transform 0.2s; padding: 5px; }
         .lang-btn:hover { transform: scale(1.2); }
 
         /* Main Content */
         main { max-width: 900px; margin: 120px auto 60px auto; padding: 0 20px; }
         section { display: none; background: var(--white); padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-        section.active { display: block; }
+        section.active { display: block !important; }
         h1 { color: var(--primary); margin-bottom: 20px; font-size: 2rem; }
         p { margin-bottom: 20px; font-size: 1.1rem; color: #4a504c; }
         
@@ -42,7 +42,7 @@
         .slider { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease-in-out; }
         .slide { min-width: 100%; width: 100%; height: 100%; flex-shrink: 0; }
         .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.3s; }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; width: 44px; height: 44px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.3s; }
         .slider-btn:hover { background: rgba(255,255,255,0.9); }
         .prev { left: 15px; }
         .next { right: 15px; }
@@ -64,16 +64,16 @@
             <div class="logo">Hillringsberg Kraftgård</div>
             <nav>
                 <ul>
-                    <li><a onclick="showTab('home')" id="nav-home" class="active">Startsida</a></li>
-                    <li><a onclick="showTab('rooms')" id="nav-rooms">Övernattning</a></li>
-                    <li><a onclick="showTab('sinnbild')" id="nav-sinnbild">SinnBildEnergie</a></li>
-                    <li><a onclick="showTab('eldstal')" id="nav-eldstal">ELDSTÅL</a></li>
+                    <li><a data-tab="home" id="nav-home" class="active">Startsida</a></li>
+                    <li><a data-tab="rooms" id="nav-rooms">Övernattning</a></li>
+                    <li><a data-tab="sinnbild" id="nav-sinnbild">SinnBildEnergie</a></li>
+                    <li><a data-tab="eldstal" id="nav-eldstal">ELDSTÅL</a></li>
                 </ul>
             </nav>
             <div class="lang-selector">
-                <button class="lang-btn" onclick="setLanguage('sv')">🇸🇪</button>
-                <button class="lang-btn" onclick="setLanguage('en')">🇬🇧</button>
-                <button class="lang-btn" onclick="setLanguage('de')">🇩🇪</button>
+                <button class="lang-btn" data-lang="sv">🇸🇪</button>
+                <button class="lang-btn" data-lang="en">🇬🇧</button>
+                <button class="lang-btn" data-lang="de">🇩🇪</button>
             </div>
         </div>
     </header>
@@ -90,8 +90,8 @@
                     <div class="slide"><img src="start2.jpg" alt="Start 2"></div>
                     <div class="slide"><img src="start3.jpg" alt="Start 3"></div>
                 </div>
-                <button class="slider-btn prev" onclick="moveSlide('home', -1)">❮</button>
-                <button class="slider-btn next" onclick="moveSlide('home', 1)">❯</button>
+                <button class="slider-btn prev" data-slider="home" data-dir="-1">❮</button>
+                <button class="slider-btn next" data-slider="home" data-dir="1">❯</button>
             </div>
         </section>
 
@@ -108,8 +108,8 @@
                     <div class="slide"><img src="zimmer3.jpg" alt="Zimmer 3"></div>
                     <div class="slide"><img src="zimmer4.jpg" alt="Zimmer 4"></div>
                 </div>
-                <button class="slider-btn prev" onclick="moveSlide('rooms', -1)">❮</button>
-                <button class="slider-btn next" onclick="moveSlide('rooms', 1)">❯</button>
+                <button class="slider-btn prev" data-slider="rooms" data-dir="-1">❮</button>
+                <button class="slider-btn next" data-slider="rooms" data-dir="1">❯</button>
             </div>
             
             <a href="mailto:sinnbildenergie@gmail.com" class="btn" id="rooms-btn">Skicka bokningsförfrågan via e-post</a>
@@ -127,8 +127,8 @@
                     <div class="slide"><img src="kunst3.jpg" alt="Kunst 3"></div>
                     <div class="slide"><img src="kunst4.jpg" alt="Kunst 4"></div>
                 </div>
-                <button class="slider-btn prev" onclick="moveSlide('sinnbild', -1)">❮</button>
-                <button class="slider-btn next" onclick="moveSlide('sinnbild', 1)">❯</button>
+                <button class="slider-btn prev" data-slider="sinnbild" data-dir="-1">❮</button>
+                <button class="slider-btn next" data-slider="sinnbild" data-dir="1">❯</button>
             </div>
             
             <a href="mailto:sinnbildenergie@gmail.com" class="btn" id="sinnbild-btn">Kontakta mig / Boka plats</a>
@@ -137,7 +137,7 @@
         <!-- Tab 4: ELDSTÅL Metallbau -->
         <section id="eldstal">
             <h1 id="eldstal-title">ELDSTÅL Metallbau</h1>
-            <p id="eldstal-text">Professionellt metallarbete och svetsning i Glava och Arvika-regionen. Vi tillverkar skräddarsydda stålkonstruktioner, räcken und unika designelement efter dina önskemål. Traditionellt hantverk möter modern precision.</p>
+            <p id="eldstal-text">Professionellt metallarbete och svetsning i Glava och Arvika-regionen. Vi tillverkar skräddarsydda stålkonstruktioner, räcken och unika designelement efter dina önskemål. Traditionellt hantverk möter modern precision.</p>
             
             <div class="slider-container">
                 <div class="slider" id="slider-eldstal">
@@ -147,8 +147,8 @@
                     <div class="slide"><img src="werkstatt4.jpg" alt="Metallbau 4"></div>
                     <div class="slide"><img src="werkstatt5.jpg" alt="Metallbau 5"></div>
                 </div>
-                <button class="slider-btn prev" onclick="moveSlide('eldstal', -1)">❮</button>
-                <button class="slider-btn next" onclick="moveSlide('eldstal', 1)">❯</button>
+                <button class="slider-btn prev" data-slider="eldstal" data-dir="-1">❮</button>
+                <button class="slider-btn next" data-slider="eldstal" data-dir="1">❯</button>
             </div>
             
             <a href="mailto:eldstalmetall@gmail.com" class="btn" id="eldstal-btn">Begär en offert</a>
@@ -160,7 +160,8 @@
     </footer>
 
     <script>
-        // Mehrsprachiges Wörterbuch (Fest verriegelt ohne "Kraftwerk" oder "Bauernhof")
+        const sliderPositions = { home: 0, rooms: 0, sinnbild: 0, eldstal: 0 };
+
         const dictionary = {
             sv: {
                 "nav-home": "Startsida", "nav-rooms": "Övernattning", "nav-sinnbild": "SinnBildEnergie", "nav-eldstal": "ELDSTÅL",
