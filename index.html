@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hillringsberg Kraftgård</title>
+    <meta name="description" content="Boende, SinnBildEnergie & ELDSTÅL Metallbau i Glava, Värmland. Svetsning Arvika, retreat och övernattning i historiska flyglar.">
+    <style>
+        :root {
+            --primary: #4a5d4e; /* Naturgrün */
+            --bg: #fbf9f6; /* Helles Naturweiß */
+            --text: #2d332f;
+            --white: #ffffff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+        
+        /* Header & Navigation */
+        header { background: var(--white); box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: fixed; top: 0; z-index: 1000; width: 100%; }
+        .nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+        .logo { font-weight: bold; font-size: 1.3rem; color: var(--primary); letter-spacing: 1px; }
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav a { text-decoration: none; color: var(--text); font-weight: 500; cursor: pointer; transition: color 0.3s; }
+        nav a:hover, nav a.active { color: var(--primary); }
+        .lang-selector { display: flex; gap: 8px; }
+        .lang-btn { background: none; border: none; font-size: 1.3rem; cursor: pointer; transition: transform 0.2s; }
+        .lang-btn:hover { transform: scale(1.2); }
+
+        /* Main Content */
+        main { max-width: 900px; margin: 120px auto 60px auto; padding: 0 20px; }
+        section { display: none; background: var(--white); padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        section.active { display: block; }
+        h1 { color: var(--primary); margin-bottom: 20px; font-size: 2rem; }
+        p { margin-bottom: 20px; font-size: 1.1rem; color: #4a504c; }
+        
+        /* Buttons */
+        .btn { display: inline-block; background: var(--primary); color: var(--white); padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 600; margin-top: 10px; border: none; cursor: pointer; transition: background 0.3s; }
+        .btn:hover { background: #3b4a3e; }
+
+        /* Slider / Karussell Konstruktion */
+        .slider-container { position: relative; width: 100%; height: 400px; margin: 25px 0; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .slider { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease-in-out; }
+        .slide { min-width: 100%; height: 100%; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.3s; }
+        .slider-btn:hover { background: rgba(255,255,255,0.9); }
+        .prev { left: 15px; }
+        .next { right: 15px; }
+
+        /* Footer */
+        footer { text-align: center; padding: 30px; font-size: 0.9rem; color: #888; border-top: 1px solid #eee; margin-top: 40px; }
+        
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 15px; }
+            main { margin-top: 180px; }
+            .slider-container { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">Hillringsberg Kraftgård</div>
+            <nav>
+                <ul>
+                    <li><a onclick="showTab('home')" id="nav-home" class="active">Startsida</a></li>
+                    <li><a onclick="showTab('rooms')" id="nav-rooms">Övernattning</a></li>
+                    <li><a onclick="showTab('sinnbild')" id="nav-sinnbild">SinnBildEnergie</a></li>
+                    <li><a onclick="showTab('eldstal')" id="nav-eldstal">ELDSTÅL</a></li>
+                </ul>
+            </nav>
+            <div class="lang-selector">
+                <button class="lang-btn" onclick="setLanguage('sv')">🇸🇪</button>
+                <button class="lang-btn" onclick="setLanguage('en')">🇬🇧</button>
+                <button class="lang-btn" onclick="setLanguage('de')">🇩🇪</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Tab 1: Startseite -->
+        <section id="home" class="active">
+            <h1 id="home-title">Välkommen till Hillringsberg Kraftgård</h1>
+            <p id="home-text">En historisk plats full av liv och skaparkraft vid Glafsfjorden i Glava. Vår gård förenar ett genuint hantverk med kreativa rum och unikt boende i en magisk natur.</p>
+            
+            <div class="slider-container">
+                <div class="slider" id="slider-home">
+                    <div class="slide"><img src="start1.jpg" alt="Start 1"></div>
+                    <div class="slide"><img src="start2.jpg" alt="Start 2"></div>
+                    <div class="slide"><img src="start3.jpg" alt="Start 3"></div>
+                </div>
+                <button class="slider-btn prev" onclick="moveSlide('home', -1)">&#10094;</button>
+                <button class="slider-btn next" onclick="moveSlide('home', 1)">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- Tab 2: Übernachtung -->
+        <section id="rooms">
+            <h1 id="rooms-title">Bo i de historiska flyglarna</h1>
+            <p id="rooms-text">Hitta ditt lugn i våra 15 mysiga rum, fördelade på Västra flygeln (10 rum) och Östra flygeln (5 rum). En perfekt plats för att tanka kraft.</p>
+            <p><strong><span id="rooms-price">Pris: 1 200 kr/natt.</span></strong></p>
+            
+            <div class="slider-container">
+                <div class="slider" id="slider-rooms">
+                    <div class="slide"><img src="zimmer1.jpg" alt="Zimmer 1"></div>
+                    <div class="slide"><img src="zimmer2.jpg" alt="Zimmer 2"></div>
+                    <div class="slide"><img src="zimmer3.jpg" alt="Zimmer 3"></div>
+                    <div class="slide"><img src="zimmer4.jpg" alt="Zimmer 4"></div>
+                </div>
+                <button class="slider-btn prev" onclick="moveSlide('rooms', -1)">&#10094;</button>
+                <button class="slider-btn next" onclick="moveSlide('rooms', 1)">&#10095;</button>
+            </div>
+            
+            <a href="mailto:sinnbildenergie@://gmail.com" class="btn" id="rooms-btn">Skicka bokningsförfrågan via e-post</a>
+        </section>
+
+        <!-- Tab 3: SinnBildEnergie -->
+        <section id="sinnbild">
+            <h1 id="sinnbild-title">SinnBildEnergie</h1>
+            <p id="sinnbild-text">Från att fungera till att känna. Kreativa rum för högkänsliga kvinnor och mammor. Kom till mina kreativa MalZeiter (målarfokuserad tid), konstnärliga workshops och exklusiva retreat på gården. Upplev vårt retreat „Der innere Funke“ (Den inre gnistan) – hitta tillbaka till din inre glöd mitt i den värmländska naturen och skapa din egen själsbild på duken.</p>
+            
+            <div class="slider-container">
+                <div class="slider" id="slider-sinnbild">
+                    <div class="slide"><img src="kunst1.jpg" alt="Kunst 1"></div>
+                    <div class="slide"><img src="kunst2.jpg" alt="Kunst 2"></div>
+                    <div class="slide"><img src="kunst3.jpg" alt="Kunst 3"></div>
+                    <div class="slide"><img src="kunst4.jpg" alt="Kunst 4"></div>
+                </div>
+                <button class="slider-btn prev" onclick="moveSlide('sinnbild', -1)">&#10094;</button>
+                <button class="slider-btn next" onclick="moveSlide('sinnbild', 1)">&#10095;</button>
+            </div>
+            
+            <a href="mailto:sinnbildenergie@://gmail.com" class="btn" id="sinnbild-btn">Kontakta mig / Boka plats</a>
+        </section>
+
+        <!-- Tab 4: ELDSTÅL -->
+        <section id="eldstal">
+            <h1 id="eldstal-title">ELDSTÅL – Din lokala svets- och metallverkstad</h1>
+            <p id="eldstal-text">Genuint och exakt hantverk direkt på gården. Med över 15 års erfarenhet erbjuder Alexander professionell TIG-svetsning, reparationer och måttanpassade konstruktioner i stål, rostfritt och aluminium [ELDSTÅL]. För lokala företag, lantbruk eller privata projekt – vi formar metall [ELDSTÅL].</p>
+            
+            <div class="slider-container">
+                <div class="slider" id="slider-eldstal">
+                    <div class="slide"><img src="werkstatt1.jpg" alt="Werkstatt 1"></div>
+                    <div class="slide"><img src="werkstatt2.jpg" alt="Werkstatt 2"></div>
+                    <div class="slide"><img src="werkstatt3.jpg" alt="Werkstatt 3"></div>
+                </div>
+                <button class="slider-btn prev" onclick="moveSlide('eldstal', -1)">&#10094;</button>
+                <button class="slider-btn next" onclick="moveSlide('eldstal', 1)">&#10095;</button>
+            </div>
+            
+            <p style="margin-top:20px;"><strong id="eldstal-contact">Kontakt:</strong> eldstal.metall@gmail.com</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Hillringsberg Kraftgård. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const dictionary = {
+            sv: {
+                navHome: "Startsida", navRooms: "Övernattning", navSinnbild: "SinnBildEnergie", navEldstal: "ELDSTÅL",
