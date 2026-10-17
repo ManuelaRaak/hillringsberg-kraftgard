@@ -90,15 +90,15 @@
                     <div class="slide"><img src="start2.jpg" alt="Start 2"></div>
                     <div class="slide"><img src="start3.jpg" alt="Start 3"></div>
                 </div>
-                <button class="slider-btn prev" onclick="moveSlide('home', -1)">&#10094;</button>
-                <button class="slider-btn next" onclick="moveSlide('home', 1)">&#10095;</button>
+                <button class="slider-btn prev" onclick="moveSlide('home', -1)">❮</button>
+                <button class="slider-btn next" onclick="moveSlide('home', 1)">❯</button>
             </div>
         </section>
 
         <!-- Tab 2: Übernachtung -->
         <section id="rooms">
             <h1 id="rooms-title">Bo i de historiska flyglarna</h1>
-            <p id="rooms-text">Hitta ditt lugn i våra 15 mysiga rum, fördelade på Västra flygeln (10 rum) och Östra flygeln (5 rum). En perfekt plats för att tanka kraft.</p>
+            <p id="rooms-text">Hitta ditt lugn i våra 15 mysiga rum, fördelade på Västra flygeln (10 rum) og Östra flygeln (5 rum). En perfekt plats för att tanka kraft.</p>
             <p><strong><span id="rooms-price">Pris: 1 200 kr/natt.</span></strong></p>
             
             <div class="slider-container">
@@ -108,11 +108,11 @@
                     <div class="slide"><img src="zimmer3.jpg" alt="Zimmer 3"></div>
                     <div class="slide"><img src="zimmer4.jpg" alt="Zimmer 4"></div>
                 </div>
-                <button class="slider-btn prev" onclick="moveSlide('rooms', -1)">&#10094;</button>
-                <button class="slider-btn next" onclick="moveSlide('rooms', 1)">&#10095;</button>
+                <button class="slider-btn prev" onclick="moveSlide('rooms', -1)">❮</button>
+                <button class="slider-btn next" onclick="moveSlide('rooms', 1)">❯</button>
             </div>
             
-            <a href="mailto:sinnbildenergie@://gmail.com" class="btn" id="rooms-btn">Skicka bokningsförfrågan via e-post</a>
+            <a href="mailto:sinnbildenergie@gmail.com" class="btn" id="rooms-btn">Skicka bokningsförfrågan via e-post</a>
         </section>
 
         <!-- Tab 3: SinnBildEnergie -->
@@ -127,31 +127,29 @@
                     <div class="slide"><img src="kunst3.jpg" alt="Kunst 3"></div>
                     <div class="slide"><img src="kunst4.jpg" alt="Kunst 4"></div>
                 </div>
-                <button class="slider-btn prev" onclick="moveSlide('sinnbild', -1)">&#10094;</button>
-                <button class="slider-btn next" onclick="moveSlide('sinnbild', 1)">&#10095;</button>
+                <button class="slider-btn prev" onclick="moveSlide('sinnbild', -1)">❮</button>
+                <button class="slider-btn next" onclick="moveSlide('sinnbild', 1)">❯</button>
             </div>
             
-            <a href="mailto:sinnbildenergie@://gmail.com" class="btn" id="sinnbild-btn">Kontakta mig / Boka plats</a>
+            <a href="mailto:sinnbildenergie@gmail.com" class="btn" id="sinnbild-btn">Kontakta mig / Boka plats</a>
         </section>
 
-        <!-- Tab 4: ELDSTÅL -->
+        <!-- Tab 4: ELDSTÅL Metallbau -->
         <section id="eldstal">
-            <h1 id="eldstal-title">ELDSTÅL – Din lokala svets- och metallverkstad</h1>
-            <p id="eldstal-text">Genuint och exakt hantverk direkt på gården. Med över 15 års erfarenhet erbjuder Alexander professionell TIG-svetsning, reparationer och måttanpassade konstruktioner i stål, rostfritt och aluminium [ELDSTÅL]. För lokala företag, lantbruk eller privata projekt – vi formar metall [ELDSTÅL].</p>
+            <h1 id="eldstal-title">ELDSTÅL Metallbau</h1>
+            <p id="eldstal-text">Professionellt metallarbete och svetsning i Glava och Arvika-regionen. Vi tillverkar skräddarsydda stålkonstruktioner, räcken och unika designelement efter dina önskemål. Traditionellt hantverk möter modern precision.</p>
             
             <div class="slider-container">
                 <div class="slider" id="slider-eldstal">
-                    <div class="slide"><img src="werkstatt1.jpg" alt="Werkstatt 1"></div>
-                    <div class="slide"><img src="werkstatt2.jpg" alt="Werkstatt 2"></div>
-                    <div class="slide"><img src="werkstatt3.jpg" alt="Werkstatt 3"></div>
-                    <div class="slide"><img src="werkstatt4.jpg" alt="Werkstatt 4"></div>
-                    <div class="slide"><img src="werkstatt5.jpg" alt="Werkstatt 5"></div>
+                    <div class="slide"><img src="metall1.jpg" alt="Metallbau 1"></div>
+                    <div class="slide"><img src="metall2.jpg" alt="Metallbau 2"></div>
+                    <div class="slide"><img src="metall3.jpg" alt="Metallbau 3"></div>
                 </div>
-                <button class="slider-btn prev" onclick="moveSlide('eldstal', -1)">&#10094;</button>
-                <button class="slider-btn next" onclick="moveSlide('eldstal', 1)">&#10095;</button>
+                <button class="slider-btn prev" onclick="moveSlide('eldstal', -1)">❮</button>
+                <button class="slider-btn next" onclick="moveSlide('eldstal', 1)">❯</button>
             </div>
             
-            <p style="margin-top:20px;"><strong id="eldstal-contact">Kontakt:</strong> eldstal.metall@gmail.com</p>
+            <a href="mailto:eldstalmetall@gmail.com" class="btn" id="eldstal-btn">Begär en offert</a>
         </section>
     </main>
 
@@ -160,6 +158,16 @@
     </footer>
 
     <script>
-        const dictionary = {
-            sv: {
-                navHome: "Startsida", navRooms: "Övernattning", navSinnbild: "SinnBildEnergie", navEldstal: "ELDSTÅL",
+        // Tab-Navigation
+        function showTab(tabId) {
+            // Alla Sektionen ausblenden
+            document.querySelectorAll('main section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Alle Nav-Links deaktivieren
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Gewählte Sektion und Nav-Link aktivieren
+            document.getElementById(tabId).classList.add('active');
