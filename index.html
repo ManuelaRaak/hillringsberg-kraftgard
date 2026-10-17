@@ -38,7 +38,7 @@
         .btn:hover { background: #3b4a3e; }
 
         /* Slider / Karussell Konstruktion */
-        .slider-container { position: relative; width: 100%; height: 400px; margin: 25px 0; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .slider-container { position: relative; width: 100%; height: 450px; margin: 25px 0; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .slider { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease-in-out; }
         .slide { min-width: 100%; height: 100%; }
         .slide img { width: 100%; height: 100%; object-fit: cover; }
@@ -53,7 +53,7 @@
         @media (max-width: 768px) {
             .nav-container { flex-direction: column; gap: 15px; }
             main { margin-top: 180px; }
-            .slider-container { height: 250px; }
+            .slider-container { height: 280px; }
         }
     </style>
 </head>
@@ -144,6 +144,8 @@
                     <div class="slide"><img src="werkstatt1.jpg" alt="Werkstatt 1"></div>
                     <div class="slide"><img src="werkstatt2.jpg" alt="Werkstatt 2"></div>
                     <div class="slide"><img src="werkstatt3.jpg" alt="Werkstatt 3"></div>
+                    <div class="slide"><img src="werkstatt4.jpg" alt="Werkstatt 4"></div>
+                    <div class="slide"><img src="werkstatt5.jpg" alt="Werkstatt 5"></div>
                 </div>
                 <button class="slider-btn prev" onclick="moveSlide('eldstal', -1)">&#10094;</button>
                 <button class="slider-btn next" onclick="moveSlide('eldstal', 1)">&#10095;</button>
