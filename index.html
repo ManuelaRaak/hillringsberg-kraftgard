@@ -40,8 +40,8 @@
         /* Slider / Karussell Konstruktion */
         .slider-container { position: relative; width: 100%; height: 450px; margin: 25px 0; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .slider { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease-in-out; }
-        .slide { min-width: 100%; height: 100%; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; }
+        .slide { min-width: 100%; width: 100%; height: 100%; flex-shrink: 0; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.3s; }
         .slider-btn:hover { background: rgba(255,255,255,0.9); }
         .prev { left: 15px; }
@@ -82,7 +82,7 @@
         <!-- Tab 1: Startseite -->
         <section id="home" class="active">
             <h1 id="home-title">Välkommen till Hillringsberg Kraftgård</h1>
-            <p id="home-text">En historisk plats full av liv och skaparkraft vid Glafsfjorden i Glava. Vår gård förenar ett genuint hantverk med kreativa rum och unikt boende i en magisk natur.</p>
+            <p id="home-text">En historisk plats full av liv och skaparkraft vid Glafsfjorden i Glava. Vår kraftgård förenar ett genuint hantverk med kreativa rum och unikt boende i en magisk natur.</p>
             
             <div class="slider-container">
                 <div class="slider" id="slider-home">
@@ -98,7 +98,7 @@
         <!-- Tab 2: Übernachtung -->
         <section id="rooms">
             <h1 id="rooms-title">Bo i de historiska flyglarna</h1>
-            <p id="rooms-text">Hitta ditt lugn i våra 15 mysiga rum, fördelade på Västra flygeln (10 rum) og Östra flygeln (5 rum). En perfekt plats för att tanka kraft.</p>
+            <p id="rooms-text">Hitta ditt lugn i våra 15 mysiga rum, fördelade på Västra flygeln (10 rum) och Östra flygeln (5 rum). En perfekt plats för att tanka kraft.</p>
             <p><strong><span id="rooms-price">Pris: 1 200 kr/natt.</span></strong></p>
             
             <div class="slider-container">
@@ -118,7 +118,7 @@
         <!-- Tab 3: SinnBildEnergie -->
         <section id="sinnbild">
             <h1 id="sinnbild-title">SinnBildEnergie</h1>
-            <p id="sinnbild-text">Från att fungera till att känna. Kreativa rum för högkänsliga kvinnor och mammor. Kom till mina kreativa MalZeiter (målarfokuserad tid), konstnärliga workshops och exklusiva retreat på gården. Upplev vårt retreat „Der innere Funke“ (Den inre gnistan) – hitta tillbaka till din inre glöd mitt i den värmländska naturen och skapa din egen själsbild på duken.</p>
+            <p id="sinnbild-text">Från att fungera till att känna. Kreativa rum för högkänsliga kvinnor och mammor. Kom till mina kreativa MalZeiter (målarfokuserad tid), konstnärliga workshops och exklusiva retreat på vår kraftgård. Upplev vårt retreat „Der innere Funke“ (Den inre gnistan) – hitta tillbaka till din inre glöd mitt i den värmländska naturen och skapa din egen själsbild på duken.</p>
             
             <div class="slider-container">
                 <div class="slider" id="slider-sinnbild">
@@ -141,9 +141,11 @@
             
             <div class="slider-container">
                 <div class="slider" id="slider-eldstal">
-                    <div class="slide"><img src="metall1.jpg" alt="Metallbau 1"></div>
-                    <div class="slide"><img src="metall2.jpg" alt="Metallbau 2"></div>
-                    <div class="slide"><img src="metall3.jpg" alt="Metallbau 3"></div>
+                    <div class="slide"><img src="werkstatt1.jpg" alt="Metallbau 1"></div>
+                    <div class="slide"><img src="werkstatt2.jpg" alt="Metallbau 2"></div>
+                    <div class="slide"><img src="werkstatt3.jpg" alt="Metallbau 3"></div>
+                    <div class="slide"><img src="werkstatt4.jpg" alt="Metallbau 4"></div>
+                    <div class="slide"><img src="werkstatt5.jpg" alt="Metallbau 5"></div>
                 </div>
                 <button class="slider-btn prev" onclick="moveSlide('eldstal', -1)">❮</button>
                 <button class="slider-btn next" onclick="moveSlide('eldstal', 1)">❯</button>
@@ -160,14 +162,10 @@
     <script>
         // Tab-Navigation
         function showTab(tabId) {
-            // Alla Sektionen ausblenden
             document.querySelectorAll('main section').forEach(section => {
                 section.classList.remove('active');
             });
-            // Alle Nav-Links deaktivieren
             document.querySelectorAll('nav a').forEach(link => {
                 link.classList.remove('active');
             });
             
-            // Gewählte Sektion und Nav-Link aktivieren
-            document.getElementById(tabId).classList.add('active');
